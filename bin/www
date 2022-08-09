@@ -1,0 +1,16 @@
+// import app & dependecies
+const app = require('../app');
+const db = require('../configs/db');
+
+// get port dinamically
+const { app: { port } } = require('../configs/env');
+
+// run
+const server = app.listen(port);
+db.init();
+
+// graceful shutdown
+process.on('SIGTERM', () => {
+  db.close();
+  server.close();
+});
