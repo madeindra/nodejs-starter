@@ -1,1 +1,3 @@
-tests/**/*.js
+dist
+node_modules
+tests
